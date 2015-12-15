@@ -18,9 +18,9 @@ Download automated build from public Docker Hub Registry: docker pull kdelfour/l
 
     docker run -it -d -p 80:80 kdelfour/lychee-docker
     
-You can add a shared directory as a volume directory with the argument *-v /your-path/uploads/:/uploads/ -v /your-path/data/:/data/* like this :
+You can add a shared directory as a volume directory with the argument *-v /your-path/uploads/:/uploads/ -v /your-path/data/:/data/ -v /your-path/mysql/:/mysql/* like this :
 
-    docker run -it -d -p 80:80 -v /your-path/uploads/:/uploads/ -v /your-path/data/:/data/ kdelfour/lychee-docker
+    docker run -it -d -p 80:80 -v /your-path/uploads/:/uploads/ -v /your-path/data/:/data/ -v /your-path/mysql/:/mysql/ kdelfour/lychee-docker
 
 A mysql server with a database is ready, you can use it with this parameters : 
 
@@ -42,6 +42,6 @@ Build it
     
 And run
 
-    sudo docker run -d -p 80:80 -v /your-path/uploads/:/uploads/ -v /your-path/data/:/data/ $USER/lychee-docker:latest
+    sudo docker run -d -p 80:80 -v /your-path/uploads/:/uploads/ -v /your-path/data/:/data/ -v /your-path/mysql/:/mysql/ $USER/lychee-docker:latest
     
 Enjoy !!    
