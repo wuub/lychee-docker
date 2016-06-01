@@ -21,6 +21,8 @@ RUN service mysql start && \
     mysql -uroot -e "CREATE USER 'lychee'@'localhost' IDENTIFIED BY 'lychee';" && \
     mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'lychee'@'localhost' WITH GRANT OPTION;" && \
     mysql -uroot -e "FLUSH PRIVILEGES;"
+RUN mkdir /var/lib/mysql_init && \
+    mv /var/lib/mysql/* /var/lib/mysql_init
     
 # ------------------------------------------------------------------------------
 # Configure php-fpm
@@ -62,9 +64,11 @@ EXPOSE 80
 WORKDIR /
 RUN ln -s /var/www/lychee/uploads uploads 
 RUN ln -s /var/www/lychee/data data
+RUN ln -s /var/lib/mysql mysql
 
 VOLUME /uploads
 VOLUME /data
+VOLUME /mysql
 
 # ------------------------------------------------------------------------------
 # Add supervisord conf
